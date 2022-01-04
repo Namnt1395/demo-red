@@ -10,10 +10,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 import Default from './layout/wrappers/BaseLayout'
 import Main from "./Main";
+import locale from 'element-ui/lib/locale/lang/en'
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
-Vue.use(ElementUI);
+Vue.use(ElementUI, {locale});
 
 Vue.component('default-layout', Default);
 Vue.component('app-layout', Main);
