@@ -6,8 +6,6 @@ import router from './router/index'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
 import Default from './layout/wrappers/BaseLayout'
 import Main from "./Main";
 import locale from 'element-ui/lib/locale/lang/en'
