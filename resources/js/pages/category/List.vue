@@ -7,9 +7,8 @@
                         <router-link :to="{name: 'cate_create'}" class="btn btn-sm btn-primary heading-btn">
                             <span>New</span>
                         </router-link>
-                        <button class="btn btn-info" data-toggle="modal" data-target="#editCate">show modal</button>
-                        <!--                        <a class="btn btn-sm btn-primary heading-btn" href="#" @click="showModel()">-->
-                        <!--                            <i class="icon-graph position-left"></i><span>Edit</span></a>-->
+                        <a class="btn btn-sm btn-primary heading-btn" href="#" v-b-modal.modal1 @click="showModel">
+                            <i class="icon-graph position-left"></i><span>Edit</span></a>
                     </div>
                 </div>
             </div>
@@ -56,7 +55,7 @@
                             @pagination="getList"/>
             </div>
         </div>
-        <b-modal id="modal1" title="Bootstrap-Vue">
+        <b-modal id="modal1"  @ok="handleOk" @cancel="handleCancel">
             <el-form :model="ruleForm" ref="ruleForm" label-width="120px" class="demo-ruleForm">
                 <el-form-item label="Name category" prop="title">
                     <el-input v-model="ruleForm.title"></el-input>
@@ -76,8 +75,6 @@
                 </el-form-item>
             </el-form>
         </b-modal>
-
-        <b-button class="mr-2" v-b-modal.modal1 @click="showModel">Launch demo modal 1</b-button>
 
     </div>
 
@@ -148,6 +145,14 @@ export default {
             let cateItem = this.multipleSelection[0]
             this.ruleForm = cateItem
             this.selectTagPicker = this.ruleForm.status
+        },
+        handleOk(bvModalEvt) {
+            console.log("ok click")
+            this.ruleForm = ''
+        },
+        handleCancel(){
+            console.log("cancel click")
+            this.ruleForm = ''
         }
     }
 }

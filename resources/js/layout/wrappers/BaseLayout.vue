@@ -16,14 +16,6 @@
                 </transition>
             </div>
         </div>
-        <!-- Modal Component -->
-
-        <b-modal id="modallg" size="lg" title="Large Modal">
-            Hello Modal!
-        </b-modal>
-        <b-modal id="modalsm" size="sm" title="Small Modal">
-            Hello Modal!
-        </b-modal>
 
     </div>
 </template>
