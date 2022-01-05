@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <component :is="layout">
-            <transition name="fade" mode="out-in">
+            <transition name="fade-transform" mode="out-in">
                 <router-view></router-view>
             </transition>
         </component>
@@ -22,6 +22,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 @import '../assets/css/main.css';
+@import './styles/transition.scss';
 </style>

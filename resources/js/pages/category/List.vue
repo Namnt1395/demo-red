@@ -18,7 +18,6 @@
                 :data="list"
                 :height="50"
                 :cell-style="{padding: '0', height: '40px'}"
-                :max-height="900"
                 :header-cell-style="{ background: '#F5F7FA', color:'black',textAlign: 'center', height: '40px' }"
                 border
                 :row-class-name="tableRowClassName"
