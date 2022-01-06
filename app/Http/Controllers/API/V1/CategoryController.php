@@ -32,6 +32,25 @@ class CategoryController extends BaseController
             ->where('status', '=', 1)
             ->count();
 
+        // format response
+        foreach ($categories as $item) {
+            // switch ($item[])
+            $status = $item["status"];
+            $statusLabel = "";
+            switch ($status) {
+                case 1:
+                    $statusLabel = "Active";
+                    break;
+                case 2:
+                    $statusLabel = "DeActive";
+                    break;
+                default:
+                    $statusLabel = "Default";
+            }
+            $item["status_label"] = $statusLabel;
+        }
+
+
         return $this->sendResponse($categories, $countCategory, "Restfull list");
     }
 

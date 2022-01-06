@@ -86,5 +86,8 @@ export default {
 </script>
 
 <style scoped>
-
+.app-sidebar {
+    width: 0px !important;
+    min-width: 240px !important;
+}
 </style>

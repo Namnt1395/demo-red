@@ -24,7 +24,6 @@ const routes = [// Dashboards
                 }
             },
             {
-                alias: '',
                 path: '',name:'cate.list', component: () => import('../pages/category/List'),
                 meta: {
                     title: 'Create'

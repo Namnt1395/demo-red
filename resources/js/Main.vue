@@ -1,15 +1,15 @@
 <template>
-    <div id="app">
+    <div>
         <component :is="layout">
             <transition name="fade-transform" mode="out-in">
                 <router-view></router-view>
             </transition>
         </component>
     </div>
+
 </template>
 
 <script>
-import '../assets/js/main.js'
 
 const default_layout = "default";
 
@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style>
+
 @import '../assets/css/main.css';
 @import './styles/transition.scss';
 </style>

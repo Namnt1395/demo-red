@@ -1,19 +1,16 @@
 <template>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-        <transition name="fade" mode="out-in" appear>
+        <transition name="fade-transform" mode="out-in">
             <Header/>
         </transition>
         <div class="app-main">
-            <transition name="fade" mode="out-in" appear>
-                <SideBar/>
-            </transition>
+            <!--            <transition name="fade-transform" mode="out-in">-->
+            <!--                <SideBar/>-->
+            <!--            </transition>-->
             <div class="app-main__outer">
                 <div class="app-main__inner">
                     <slot></slot>
                 </div>
-                <transition name="fade" mode="out-in" appear>
-                    <Footer/>
-                </transition>
             </div>
         </div>
 
@@ -31,6 +28,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+.fixed-sidebar .app-main .app-main__outer {
+    padding-left: 0px !important;
+}
 </style>
