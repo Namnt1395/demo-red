@@ -1,15 +1,7 @@
 <template>
     <div class="main-card mb-3 card">
-        <div class="card-body">
+        <div class="row panel-header">
             <div role="group" class="btn-group" data-toggle="buttons">
-                <!--                <div class="btn-group">-->
-                <!--                    <router-link :to="{name: 'cate_create'}" class="btn btn-sm btn-primary heading-btn">-->
-                <!--                        <span>New</span>-->
-                <!--                    </router-link>-->
-                <!--                    <a class="btn btn-sm btn-primary heading-btn" v-bind:class="[activeEdit]" href="#"-->
-                <!--                       @click="showModel">-->
-                <!--                        <i class="icon-graph position-left"></i><span>Edit</span></a>-->
-                <!--                </div>-->
                 <b-button-toolbar aria-label="Toolbar with button groups and dropdown menu">
                     <b-button-group class="mx-1">
                         <b-button :to="{name: 'cate_create'}" variant="primary">
@@ -21,14 +13,32 @@
                     </b-button-group>
                 </b-button-toolbar>
             </div>
-            <div class="table-setting text-right">
-                <b-dropdown  text="Column" class="dropleft">
-                    <b-dropdown-form>
+            <div class="table-setting ml-auto mr-3">
+                <b-dropdown  text="Column" class="m-md-2">
+                    <b-dropdown-form class="b-dropdown-form-custom">
                         <el-checkbox type="success" @change="columnStatus =!columnStatus">Status</el-checkbox>
                     </b-dropdown-form>
                 </b-dropdown>
             </div>
         </div>
+        <div class="divider"></div>
+        <div class="panel-body">
+                <el-form :inline="true" class="row">
+                    <el-form-item>
+                        <el-input v-model="listQuery.title" placeholder="Filter Name"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-select v-model="listQuery.status" placeholder="Filter Status">
+                                <el-option label="Active" value="1"></el-option>
+                            <el-option label="DeActive" value="2"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item class="ml-auto mr-3">
+                        <el-button type="primary" @click="handleGetList">Apply / Refresh</el-button>
+                    </el-form-item>
+                </el-form>
+        </div>
+        <div class="divider"></div>
         <el-table
             v-if="this.list != null"
             v-loading="listLoading"
@@ -160,6 +170,8 @@ export default {
             listQuery: {
                 page: 1,
                 limit: 20,
+                title: '',
+                status:''
             },
             multipleSelection: [],
             selectTagPicker: '',
@@ -327,7 +339,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.b-dropdown-form-custom{
+    width: 100px !important;
+}
+/**
+Panel table
+ */
+.panel-header{
+    padding: 18px 20px 0px 35px;
+}
+.panel-body{
+    padding-left: 21px;
+    padding-right: 21px;
+}
+.el-form-item{
+    margin-bottom: 0px !important;
+}
 .modal-footer {
     background: white !important;
 }
@@ -396,6 +423,5 @@ export default {
     background: #b8c1cb !important;
 
 }
-
 
 </style>

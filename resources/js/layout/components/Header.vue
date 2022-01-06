@@ -8,7 +8,7 @@
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <b-nav-item to="/">Dashboard</b-nav-item>
-                    <b-nav-item to="cate">Category</b-nav-item>
+                    <b-nav-item to="/cate">Category</b-nav-item>
                     <b-nav-item-dropdown text="Tool">
                         <b-dropdown-item href="#">Api</b-dropdown-item>
                         <b-dropdown-item href="#">Domain</b-dropdown-item>

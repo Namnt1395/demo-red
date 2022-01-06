@@ -14,19 +14,26 @@ class CategoryController extends BaseController
 
     public function list(Request $request)
     {
-        $page = $request->query('page');
 
+        $page = $request->query('page');
         $perPage = $request->query('limit');
         if (empty($perPage)) {
             $perPage = Config::get('constants.per_page');
         }
+        $title = $request->query('title');
+        $status = $request->query('status');
 
         $offset = ($page - 1) * $perPage;
 
-        $categories = Category::query()->select("id", "title", "description", "status", "created_time", "updated_time")
-//            ->where('status', '=', 1)
-            ->limit($perPage)->offset($offset)
-            ->get();
+        $categories = Category::query()->select("id", "title", "description", "status", "created_time", "updated_time");
+        if (!empty($title)) {
+            $categories = $categories->where("title", 'like', '%' . $title . '%');
+        }
+        if (!empty($status)) {
+            $categories = $categories->where('status', '=', $status);
+        }
+        $categories = $categories->limit($perPage)->offset($offset)->get();
+
 
         $countCategory = Category::query()->select("id", "title", "description", "created_time", "updated_time")
             ->where('status', '=', 1)
@@ -50,7 +57,7 @@ class CategoryController extends BaseController
             $item["status_label"] = $statusLabel;
         }
 
-
+       // dd("Vao day", $countCategory);
         return $this->sendResponse($categories, $countCategory, "Restfull list");
     }
 
