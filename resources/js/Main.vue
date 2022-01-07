@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-
+@import './styles/custom.scss';
 @import '../assets/css/main.css';
 @import './styles/transition.scss';
 </style>

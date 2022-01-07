@@ -48,7 +48,7 @@ export default {
     height: 100%;
 }
 .navbar-dark .navbar-nav .nav-link {
-    color: white !important;
+    color: white;
     font-weight: bold;
 }
 .dropdown-item {

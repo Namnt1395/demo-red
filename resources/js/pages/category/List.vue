@@ -4,17 +4,19 @@
             <div role="group" class="btn-group" data-toggle="buttons">
                 <b-button-toolbar aria-label="Toolbar with button groups and dropdown menu">
                     <b-button-group class="mx-1">
-                        <b-button :to="{name: 'cate_create'}" variant="primary">
+                        <b-button :to="{name: 'cate_create'}" variant="primary" class="btn-panel-header">
                             New
                         </b-button>
                     </b-button-group>
                     <b-button-group class="mx-1">
-                        <b-button v-bind:class="[activeEdit]" @click="showModel" variant="primary">Edit</b-button>
+                        <b-button v-bind:class="[activeEdit]" @click="showModel" variant="primary"
+                                  class="btn-panel-header">Edit
+                        </b-button>
                     </b-button-group>
                 </b-button-toolbar>
             </div>
             <div class="table-setting ml-auto mr-3">
-                <b-dropdown  text="Column" class="m-md-2">
+                <b-dropdown id="dropdown-dropright" dropleft text="Column" class="m-2">
                     <b-dropdown-form class="b-dropdown-form-custom">
                         <el-checkbox type="success" @change="columnStatus =!columnStatus">Status</el-checkbox>
                     </b-dropdown-form>
@@ -23,20 +25,21 @@
         </div>
         <div class="divider"></div>
         <div class="panel-body">
-                <el-form :inline="true" class="row">
-                    <el-form-item>
-                        <el-input v-model="listQuery.title" placeholder="Filter Name"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-select v-model="listQuery.status" placeholder="Filter Status">
-                                <el-option label="Active" value="1"></el-option>
-                            <el-option label="DeActive" value="2"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item class="ml-auto mr-3">
-                        <el-button type="primary" @click="handleGetList">Apply / Refresh</el-button>
-                    </el-form-item>
-                </el-form>
+            <el-form :inline="true" class="row">
+                <el-form-item>
+                    <el-input v-model="listQuery.title" placeholder="Filter Name"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-select v-model="listQuery.status" placeholder="Filter Status">
+                        <el-option label="Active" value="1"></el-option>
+                        <el-option label="DeActive" value="2"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item class="ml-auto mr-3">
+                    <el-button type="primary" @click="handleGetList">Apply / Refresh</el-button>
+                </el-form-item>
+            </el-form>
         </div>
         <div class="divider"></div>
         <el-table
@@ -171,7 +174,7 @@ export default {
                 page: 1,
                 limit: 20,
                 title: '',
-                status:''
+                status: ''
             },
             multipleSelection: [],
             selectTagPicker: '',
@@ -339,26 +342,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.b-dropdown-form-custom{
-    width: 100px !important;
-}
-/**
-Panel table
- */
-.panel-header{
-    padding: 18px 20px 0px 35px;
-}
-.panel-body{
-    padding-left: 21px;
-    padding-right: 21px;
-}
-.el-form-item{
-    margin-bottom: 0px !important;
-}
-.modal-footer {
-    background: white !important;
-}
-
 .position-absolute {
 
     position: absolute;
@@ -398,11 +381,6 @@ Panel table
 
 }
 
-.el-table__body-wrapper {
-    height: 600px !important;
-
-}
-
 .el-table .warning-row {
 
     background: oldlace;
@@ -418,10 +396,8 @@ Panel table
     background: #c8e6c9;
 
 }
-
-.divider {
-    background: #b8c1cb !important;
-
+.el-form-item {
+    margin-bottom: 0px !important;
 }
 
 </style>
